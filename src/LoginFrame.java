@@ -20,16 +20,12 @@ public class LoginFrame extends JFrame {
         Init();
     }
     private void Init() {
+        Container cp;
         cp = this.getContentPane();
         cp.setLayout(new GridLayout(3,2,1,1));
         this.setBounds((screenW-frmW)/2,(screenH-frmH)/2,frmW,frmH);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        cp.add(jbl1);
-        cp.add(jfID);
-        cp.add(jbl2);
-        cp.add(jfPW);
-        cp.add(jbn1);
-        cp.add(jbn2);
+
 
         jbn1.addActionListener(new ActionListener() {
             @Override
@@ -41,9 +37,24 @@ public class LoginFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                     if(jfID.getText().equals("h304")&&
-                            (new String(jfPW.getPassword())).equals("23323"))
+                            new String(jfPW.getPassword()).equals("23323")) {
+                        MainFrame mf = new MainFrame(LoginFrame.this);
+                        mf.setVisible(true);
+                        LoginFrame.this.setVisible(false);
+                        dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(LoginFrame.this,
+                                "Error"+"\nID:"+jfID.getText()+"\nPassword:"+new String(jfPW)}
+
+
             }
         });
+        cp.add(jbl1);
+        cp.add(jfID);
+        cp.add(jbl2);
+        cp.add(jfPW);
+        cp.add(jbn1);
+        cp.add(jbn2);
 
 
     }
